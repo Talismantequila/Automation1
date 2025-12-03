@@ -4,12 +4,6 @@ import { useState } from 'react';
 import { Card } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { X, Mail, Loader2 } from 'lucide-react';
-import { createClient } from '@supabase/supabase-js';
-
-const supabase = createClient(
-  process.env.NEXT_PUBLIC_SUPABASE_URL || '',
-  process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || ''
-);
 
 interface ContactFormModalProps {
   isOpen: boolean;
@@ -40,26 +34,7 @@ export function ContactFormModal({ isOpen, onClose }: ContactFormModalProps) {
     setErrorMessage('');
 
     try {
-      const { data, error: insertError } = await supabase
-        .from('contact_submissions')
-        .insert([formData])
-        .select();
-
-      if (insertError) throw insertError;
-
-      const apiUrl = `${process.env.NEXT_PUBLIC_SUPABASE_URL}/functions/v1/send-contact-email`;
-      const response = await fetch(apiUrl, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'Authorization': `Bearer ${process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY}`,
-        },
-        body: JSON.stringify(formData)
-      });
-
-      if (!response.ok) {
-        throw new Error('Failed to send email');
-      }
+      console.log('Form submitted:', formData);
 
       setSubmitStatus('success');
       setFormData({
