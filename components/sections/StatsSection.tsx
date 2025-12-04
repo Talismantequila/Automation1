@@ -17,7 +17,7 @@ export function StatsSection() {
         </Card>
         <Card className="bg-white/5 border-white/10 hover:border-[#D4AF37]/50 transition-all duration-300 p-6 text-center">
           <Rocket className="w-12 h-12 text-[#D4AF37] mx-auto mb-4" />
-          <div className="text-4xl font-bold text-[#D4AF37] mb-2">2 Weeks</div>
+          <div className="text-4xl font-bold text-[#D4AF37] mb-2">2 days</div>
           <div className="text-white/70">Average Deployment</div>
         </Card>
         <Card className="bg-white/5 border-white/10 hover:border-[#D4AF37]/50 transition-all duration-300 p-6 text-center">
